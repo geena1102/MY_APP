@@ -1,0 +1,305 @@
+/* src/components/AjaUniverse.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* --- Base & Background --- */
+.universe-container {
+  min-height: 100vh;
+  width: 100%;
+  background-image: url('../assets/5.jpg');
+  /* background-color: black; */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+  color: #ffffff;
+  text-align: center;
+  z-index: 0;
+}
+
+/* --- Typography --- */
+.main-title {
+  padding-top: 10px;
+  font-size: 3rem;
+  font-weight: 600;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+  animation: fadeInDown 1s ease-out;
+}
+
+.universe-labels {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15%;
+  box-sizing: border-box;
+}
+
+.products-universe-label, .service-universe-label {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
+
+.products-universe-label {
+  color: #00e5ff;
+  text-shadow: 0 0 10px #00e5ff;
+  animation: fadeInLeft 1s ease-out;
+}
+
+.service-universe-label {
+  color: #ff9a3c;
+  text-shadow: 0 0 10px #ff9a3c;
+  animation: fadeInRight 1s ease-out;
+}
+
+/* --- Clickable Items --- */
+.items-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+}
+
+.items-wrapper,
+.main-title,
+.universe-labels,
+.modal-overlay {
+  /* position: relative; */
+  z-index: 5;
+}
+.universe-item {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  animation: popIn 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+.icon-container {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  clip-path: polygon(50% 0%, 95% 25%, 95% 75%, 50% 100%, 5% 75%, 5% 25%);
+  transition: transform 0.3s ease, background 0.3s ease;
+  
+  /* Glassmorphism Effect */
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.universe-item:hover .icon-container {
+  transform: scale(1.15);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.item-icon {
+  width: 45px;
+  height: 45px;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2) contrast(100%);
+}
+
+.item-label {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  font-weight: 300;
+  max-width: 120px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+/* --- Modal Styling --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 20, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-card {
+  width: 90%;
+  max-width: 280px;
+  border-radius: 16px;
+  padding: 50px 20px;
+  color: #f0f0f0;
+  text-align: left;
+  
+  /* Glassmorphism Effect */
+  background: rgba(30, 30, 45, 0.6);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  animation: slideUp 0.4s ease-out;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.hamburger-icon {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+.close-button:hover {
+  opacity: 1;
+}
+
+.modal-body h4 {
+  margin-top: 15px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #87CEEB; /* Sky Blue */
+}
+
+.modal-body p {
+  font-weight: 300;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.modal-footer {
+  margin-top: 25px;
+  text-align: right;
+}
+
+.modal-action-button {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  font-size: 0.8rem;
+}
+
+.modal-action-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* --- Animations --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { from { opacity: 0; transform: translate(-50%, -50%) scale(0.5); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeInLeft { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes fadeInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+/* Adding animation delays for a staggered effect */
+.universe-item:nth-child(1) { animation-delay: 0.1s; }
+.universe-item:nth-child(2) { animation-delay: 0.2s; }
+.universe-item:nth-child(3) { animation-delay: 0.3s; }
+/* ... and so on for all items */
+.universe-item:nth-child(4) { animation-delay: 0.4s; }
+.universe-item:nth-child(5) { animation-delay: 0.1s; }
+.universe-item:nth-child(6) { animation-delay: 0.2s; }
+.universe-item:nth-child(7) { animation-delay: 0.3s; }
+.universe-item:nth-child(8) { animation-delay: 0.4s; }
+.universe-item:nth-child(9) { animation-delay: 0.5s; }
+.universe-item:nth-child(10) { animation-delay: 0.6s; }
+
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+  .main-title {
+    font-size: 2.2rem;
+  }
+  .universe-labels {
+    flex-direction: column;
+    align-items: center;
+    top: 120px;
+    gap: 60vh;
+  }
+  .icon-container {
+    width: 70px;
+    height: 70px;
+  }
+  .item-icon {
+    width: 35px;
+    height: 35px;
+  }
+  .item-label {
+    font-size: 0.7rem;
+  }
+}
+
+/* --- Star Background Layer --- */
+.stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+  background-size: 900px 900px;
+  animation: moveStars 120s linear infinite;
+  z-index: 1; /* behind everything else */
+  opacity: 0.6;
+}
+
+.stars::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: transparent url('https://www.transparenttextures.com/patterns/dark-matter.png') repeat;
+  background-size: 900px 900px;
+  animation: moveStars 180s linear infinite reverse;
+  opacity: 0.4;
+}
+
+@keyframes moveStars {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-500px, -500px);
+  }
+}
+
+
