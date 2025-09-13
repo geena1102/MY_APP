@@ -1,0 +1,196 @@
+/* src/components/Timeline.css */
+
+.timeline-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(10, 15, 30, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.timeline-close-button {
+  position: absolute;
+  top: 40px;
+  right: 50px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 2.5rem;
+  cursor: pointer;
+  z-index: 2001;
+}
+
+.timeline-container {
+  width: 90%;
+  max-width: 800px;
+  position: relative;
+}
+
+/* Base style for each timeline event row */
+.timeline-item {
+  display: flex;
+  justify-content: center; /* Center the middle node */
+  align-items: center;
+  position: relative;
+  margin: 50px 0;
+  opacity: 0;
+  animation: slideIn 0.6s ease-out forwards;
+}
+
+/* The middle section holding the line and node */
+.timeline-middle {
+  position: relative;
+  width: 10px; /* Width of the colored line */
+}
+
+/* The colored segment of the central line */
+.timeline-middle::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -50%;
+  height: 100%;
+  width: 100%;
+  background-color: var(--timeline-color);
+  border-radius: 5px;
+}
+
+/* The small circle on the central line */
+.timeline-middle::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: var(--timeline-color);
+  border: 4px solid white;
+  z-index: 2;
+}
+
+/* Fix for the first and last items' lines */
+.timeline-item:first-child .timeline-middle::before { top: 50%; height: 50%; }
+.timeline-item:last-child .timeline-middle::before { height: 50%; }
+
+/* The left and right containers for content/icons */
+.timeline-side {
+  flex-basis: 50%;
+  padding: 0 40px;
+}
+
+.timeline-side-left {
+  text-align: right;
+}
+.timeline-side-right {
+  text-align: left;
+}
+
+/* The large circular icon */
+.timeline-icon {
+  width: 80px;
+  height: 80px;
+  background-color: var(--timeline-color);
+  border-radius: 50%;
+  display: inline-flex; /* Use inline-flex to align with text-align */
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border: 4px solid white;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.timeline-icon img {
+  width: 40px;
+  height: 40px;
+  filter: brightness(0) invert(1);
+}
+
+/* Dotted line connecting the icon to the center */
+.timeline-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 20px;
+  background-image: linear-gradient(to right, white 50%, transparent 50%);
+  background-size: 8px 2px;
+}
+
+.timeline-side-left .timeline-icon::after {
+  right: -20px;
+}
+.timeline-side-right .timeline-icon::after {
+  left: -20px;
+}
+
+/* Text styling */
+.timeline-year {
+  color: var(--timeline-color);
+  font-size: 1rem;
+  font-weight: 600;
+}
+.timeline-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 8px 0;
+}
+.timeline-description {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Animations */
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.timeline-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px; /* Thickness of the line */
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2); /* A semi-transparent white */
+  transform: translateX(-50%);
+  z-index: 1; /* This is important: it places the line BEHIND the colored circles */
+}
+.timeline-item:hover .timeline-icon {
+  transform: scale(1.1); /* Makes the icon 10% larger */
+  box-shadow: 0 0 20px var(--timeline-color); /* Adds a glow using the icon's color */
+}
+.timeline-content {
+  transition: transform 0.3s ease-in-out;
+}
+
+/* This rule already exists, for context */
+.timeline-year {
+  color: var(--timeline-color);
+  /* ... */
+}
+/* In Timeline.css, add this new rule */
+
+/* This rule already exists for the icon */
+.timeline-item:hover .timeline-icon {
+  transform: scale(1.1); /* Makes the icon 10% larger */
+  box-shadow: 0 0 20px var(--timeline-color); /* Adds a glow using the icon's color */
+}
+
+/* ADD THIS NEW RULE for the text content hover effect */
+.timeline-item:hover .timeline-content {
+  transform: translateY(-5px); /* Lifts the text block up slightly */
+}

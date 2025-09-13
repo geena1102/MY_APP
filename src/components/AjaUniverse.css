@@ -94,10 +94,11 @@
   transition: transform 0.3s ease, background 0.3s ease;
   
   /* Glassmorphism Effect */
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+ background: rgba(0, 0, 0, 0.25); /* CHANGED: Darker and more opaque background */
+  backdrop-filter: blur(12px);      /* CHANGED: Increased blur for better separation */
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3); /* CHANGED: Brighter border */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); 
 }
 
 .universe-item:hover .icon-container {
@@ -328,4 +329,27 @@
   .universe-item {
     transform: translate(-50%, -40%); /* push down slightly */
   }
+}
+
+.timeline-button {
+  position: absolute;
+  top: 40px;
+  right: 50px;
+  z-index: 100;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.timeline-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
