@@ -6,7 +6,7 @@
 .universe-container {
   min-height: 100vh;
   width: 100%;
-  background-image: url('../assets/5.jpg');
+  background-image: url('../assets/8.png');
   /* background-color: black; */
   background-size: cover;
   background-position: center;
@@ -58,11 +58,10 @@
 /* --- Clickable Items --- */
 .items-wrapper {
   position: absolute;
-  top: 0;
+  top: 150px; /* push down so they appear below labels */
   left: 0;
   width: 100%;
-  height: 100%;
-
+  height: calc(100% - 200px); /* keep them inside the remaining space */
 }
 
 .items-wrapper,
@@ -86,8 +85,8 @@
 }
 
 .icon-container {
-  width: 80px;
-  height: 80px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -107,14 +106,15 @@
 }
 
 .item-icon {
-  width: 45px;
-  height: 45px;
+  width: 32px;
+  height: 32px;
   filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(1.2) contrast(100%);
 }
 
 .item-label {
-  margin-top: 10px;
-  font-size: 0.8rem;
+  margin-top: 8px;
+  font-size: 0.7rem;   /* was 0.8rem */
+  max-width: 100px; 
   font-weight: 300;
   max-width: 120px;
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
@@ -137,15 +137,15 @@
 
 .modal-card {
   width: 90%;
-  max-width: 280px;
+  max-width: 320px;
   border-radius: 16px;
-  padding: 50px 20px;
+  padding: 20px 25px;
   color: #f0f0f0;
   text-align: left;
   
   /* Glassmorphism Effect */
-  background: rgba(30, 30, 45, 0.6);
-  backdrop-filter: blur(15px);
+  background: rgba(162, 162, 164, 0.068);
+  backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(15px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
@@ -267,6 +267,7 @@
 }
 
 /* --- Star Background Layer --- */
+/* --- Star Background Layer --- */
 .stars {
   position: absolute;
   top: 0;
@@ -277,7 +278,10 @@
   background-size: 900px 900px;
   animation: moveStars 120s linear infinite;
   z-index: 1; /* behind everything else */
-  opacity: 0.6;
+  opacity: 1;
+  
+  /* Brightness boost */
+  filter: brightness(2) contrast(1.4);
 }
 
 .stars::after {
@@ -290,7 +294,9 @@
   background: transparent url('https://www.transparenttextures.com/patterns/dark-matter.png') repeat;
   background-size: 900px 900px;
   animation: moveStars 180s linear infinite reverse;
-  opacity: 0.4;
+  opacity: 0.7;
+  filter: brightness(0) contrast(1.3);
+  mix-blend-mode: screen; /* makes stars shine */
 }
 
 @keyframes moveStars {
@@ -303,3 +309,23 @@
 }
 
 
+
+
+@media (max-width: 768px) {
+  .universe-labels {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 40px;
+  }
+
+
+.items-wrapper {
+    top: 250px; /* push items even further down for mobile */
+    height: calc(100% - 250px);
+   }
+
+  .universe-item {
+    transform: translate(-50%, -40%); /* push down slightly */
+  }
+}
