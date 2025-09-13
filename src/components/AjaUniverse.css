@@ -94,7 +94,7 @@
   transition: transform 0.3s ease, background 0.3s ease;
   
   /* Glassmorphism Effect */
- background: rgba(0, 0, 0, 0.25); /* CHANGED: Darker and more opaque background */
+ background: rgba(0, 0, 0, 1.0); /* CHANGED: Darker and more opaque background */
   backdrop-filter: blur(12px);      /* CHANGED: Increased blur for better separation */
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.3); /* CHANGED: Brighter border */
@@ -103,7 +103,9 @@
 
 .universe-item:hover .icon-container {
   transform: scale(1.15);
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.2); /* CHANGED: Creates a brighter 'lit-up' glass effect */
+  border: 1px solid rgba(255, 255, 255, 1); /* CHANGED: A solid, bright white border for definition */
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.7); /* ADDED: A strong, visible white glow */
 }
 
 .item-icon {
@@ -138,9 +140,9 @@
 
 .modal-card {
   width: 90%;
-  max-width: 320px;
+  max-width: 350px;
   border-radius: 16px;
-  padding: 20px 25px;
+  padding: 60px 25px;
   color: #f0f0f0;
   text-align: left;
   
